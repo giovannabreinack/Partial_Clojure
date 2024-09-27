@@ -12,6 +12,17 @@
   (partial converter-temp (/ 5 9) -32))
 (println (faranheit-para-celsius 80.0))
 
+; Partial 03
+(defn calcular_preco [preco desconto]
+  (* preco (- 1 desconto)))
+(def desconto_10_porcento (partial calcular_preco 0.10))
+(println "Valor do Desconto:" (desconto_10_porcento 200))
+
+; Partial 04
+(defn concatenar [c a b] (c a b))
+(def saudacao (partial concatenar str))
+(println (saudacao "Olá" "Galera"))
+
 ; Partial 05
 (defn calculadora [f a b] (f a b))
 (println "Soma:" (calculadora + 5 6))
