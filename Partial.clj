@@ -48,3 +48,19 @@
 (println ((texto "clojure") "maiuscula"))
 (println ((texto "clojure") "inverte"))
 
+; Curryng 010
+(defn gerar-relatorio [tipo]
+  (fn [dados]
+    (cond
+      (= tipo "PDF") (str "Relatório em PDF: " dados)
+      (= tipo "HTML") (str "<html><body>Relatório: " dados "</body></html>")
+      (= tipo "CSV") (str "Relatório em CSV: " (clojure.string/join "," (map str dados)))
+      :else "Tipo de relatório desconhecido.")))
+(def gerar-pdf (gerar-relatorio "PDF"))
+(def gerar-html (gerar-relatorio "HTML"))
+(def gerar-csv (gerar-relatorio "CSV"))
+(println (gerar-pdf "Dados do relatório"))  
+(println (gerar-html "Dados do relatório"))  
+(println (gerar-csv [1 2 3 4]))              
+
+
